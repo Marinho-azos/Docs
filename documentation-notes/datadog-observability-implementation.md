@@ -45,7 +45,7 @@ Para a conclusão bem-sucedida desta iniciativa, as seguintes etapas devem ser *
 | **aggregation-b2c-dash** | 🟡 PÓS VENDAS | ⏳ ToDo |
 | **broker-service** | 🟢 ATIVAÇÃO | ⏳ ToDo |
 | **doc_signature_service** | 🟢 ATIVAÇÃO | ⏳ ToDo |
-| **domain-account** | 🟢 ATIVAÇÃO | ⏳ ToDo |
+| **domain-account** | 🟢 ATIVAÇÃO | 🚧 In Progress |
 | **domain-dps-service** | 🟢 ATIVAÇÃO | ⏳ ToDo |
 | **domain-product-settings** | 🟢 ATIVAÇÃO | ⏳ ToDo |
 | **domain-proposal** | 🟢 ATIVAÇÃO | ⏳ ToDo |
@@ -94,79 +94,7 @@ Para a conclusão bem-sucedida desta iniciativa, as seguintes etapas devem ser *
 | **subscription-analytics** | 🟡 PÓS VENDAS | ⏳ ToDo |
 | **user-dashboard-wizard** | 🟡 PÓS VENDAS | ⏳ ToDo |
 | **web-plataforma** | 🟡 PÓS VENDAS | ⏳ ToDo |
-| **excelsior-service** | 🟢 ATIVAÇÃO | 🔍 Review |
-
----
-
-## 🔧 Compatibilidade com ddtrace
-
-### ✅ **BIBLIOTECAS COMPATÍVEIS COM DDTRACE**
-
-#### 🌐 **Web Framework & HTTP**
-- `fastapi==0.95.2`
-- `starlette==0.27.0`
-- `uvicorn==0.20.0`
-- `gunicorn==20.1.0`
-- `h11==0.14.0`
-
-#### 🗄️ **Database & Storage**
-- `motor==3.7.0`
-- `pymongo==4.11.1`
-
-#### 🌍 **HTTP Clients & Networking**
-- `requests==2.32.3`
-- `httpx==0.23.3`
-- `urllib3==2.3.0`
-- `anyio==4.8.0`
-
-#### ☁️ **Cloud Services & gRPC**
-- `google-cloud-pubsub==2.28.0`
-- `google-api-core[grpc]==2.24.1`
-- `grpcio==1.70.0`
-- `grpcio-status==1.70.0`
-- `grpc-google-iam-v1==0.14.0`
-
-#### 📦 **Protocol Buffers**
-- `proto-plus==1.26.0`
-- `protobuf==5.29.3`
-
----
-
-### ❌ **BIBLIOTECAS NÃO COMPATÍVEIS COM DDTRACE**
-
-#### 📊 **Data Processing & Validation**
-- `pydantic==1.10.21`
-- `python-dateutil==2.9.0.post0`
-- `pytz==2024.2`
-
-#### 🔐 **Authentication & Security**
-- `google-auth==2.38.0`
-- `rsa==4.9`
-- `pyasn1==0.6.1`
-- `pyasn1-modules==0.4.1`
-
-#### 🛠️ **Utilities & Helpers**
-- `pyyaml==6.0.2`
-- `certifi==2022.12.7`
-- `charset-normalizer==2.1.1`
-- `idna==3.10`
-- `six==1.17.0`
-- `wrapt==1.17.2`
-
-#### ⚙️ **Dependency Injection & Configuration**
-- `dependency-injector[yaml]==4.45.0`
-
-#### 🧪 **Development & Testing**
-- `click==8.1.8`
-- `cachetools==5.5.1`
-- `importlib-metadata==8.5.0`
-- `setuptools==75.8.0`
-- `zipp==3.21.0`
-
-#### ⚠️ **Observability (Conflito)**
-- `opentelemetry-api==1.30.0`
-- `opentelemetry-sdk==1.30.0`
-- `opentelemetry-semantic-conventions==0.51b0`
+| **excelsior-service** | 🟢 ATIVAÇÃO | ✅ Done |
 
 ---
 
