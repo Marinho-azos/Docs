@@ -115,7 +115,7 @@ def calculate_capital_limit(
 - **Esforço:** Baixo
 - **Risco:** Médio
 - **Complexidade:** Baixa
-- **Manutenibilidade:** Baixa
+- **Manutenibilidade:** Média
 
 #### **Opção 2: Criação de Nova Função de Validação (recomendada)**
 - **Esforço:** Baixo
