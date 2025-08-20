@@ -112,10 +112,21 @@ def calculate_capital_limit(
 ### 📊 **Análise de Impacto**
 
 #### **Opção 1: Modificação da Função Existente**
-- **Esforço:** Baixa
+- **Esforço:** Baixo
 - **Risco:** Médio
 - **Complexidade:** Baixa
 - **Manutenibilidade:** Baixa
+
+#### **Opção 2: Criação de Nova Função de Validação (recomendada)**
+- **Esforço:** Baixo
+- **Risco:** Médio
+- **Complexidade:** Baixa
+- **Manutenibilidade:** Baixa
+
+### ⏱️ **Estimativa**
+
+**Tempo previsto para Opção 1:** 2-3 h
+**Tempo previsto para Opção 2:** 2-3 h
 
 ### 🚧 **Próximos Passos**
 
