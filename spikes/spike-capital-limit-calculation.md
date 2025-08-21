@@ -121,12 +121,12 @@ def calculate_capital_limit(
 - **Esforço:** Baixo
 - **Risco:** Médio
 - **Complexidade:** Baixa
-- **Manutenibilidade:** Baixa
+- **Manutenibilidade:** Alta
 
 ### ⏱️ **Estimativa**
 
-**Tempo previsto para Opção 1:** 2-3 h
-**Tempo previsto para Opção 2:** 2-3 h
+**Tempo previsto para Opção 1:** 3 h
+**Tempo previsto para Opção 2:** 3 h
 
 ### 🚧 **Próximos Passos**
 
