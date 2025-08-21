@@ -75,9 +75,9 @@ A empresa de seguros precisa fazer melhorias na subscrição de risco para mante
   - IMC ≤ 30 kg/m²
 - **Resultado**: Geração de proposta permitida
 
-#### **Cenário 2: DPS > 2 ou EV > 2 (Recusa)**
+#### **Cenário 2: DPS > 2 ou EV > 2 (Não se aplica)**
 - **Capital máximo**: 2M para cobertura de morte
-- **Resultado**: Recusa na cotação, capital limitado
+- **Resultado**: Não se aplica
 
 #### **Coberturas não afetadas**
 - Todas as demais coberturas mantêm regras atuais
