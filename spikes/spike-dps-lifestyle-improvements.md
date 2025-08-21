@@ -1,18 +1,18 @@
 # Spike - DPS and Lifestyle Questionnaire Improvements
 
-> **Documento de Investigação Técnica**: Análise das melhorias na subscrição de risco para produtos Swiss e Excelsior com aumento do limite de capital segurado
+> **Documento de Investigação Técnica**: Análise das melhorias na subscrição de risco para produtos com aumento do limite de capital segurado
 
 ---
 
 ## 📋 Descrição
 
-Realizar uma investigação técnica detalhada sobre as melhorias na subscrição de risco para produtos Swiss e Excelsior, focando no aumento do limite de capital segurado de 2M para 3M para cobertura de morte (seguro de vida). O objetivo é implementar novas regras de validação baseadas em DPS (≤2) e EV (≤2) para expandir a aceitação de clientes e aumentar a competitividade no mercado.
+Realizar uma investigação técnica detalhada sobre as melhorias na subscrição de risco para produtos focando no aumento do limite de capital segurado de 2M para 3M para cobertura de morte (seguro de vida). O objetivo é implementar novas regras de validação baseadas em DPS (≤2) e EV (≤2) para expandir a aceitação de clientes e aumentar a competitividade no mercado.
 
 ---
 
 ## 🎯 Contexto
 
-A empresa de seguros precisa fazer melhorias na subscrição de risco para manter a competitividade no mercado e melhorar a experiência dos clientes. Foi aprovada uma alteração para produtos Swiss e Excelsior que aumenta o limite de capital segurado de 2M para 3M para cobertura de morte (seguro de vida).
+A empresa de seguros precisa fazer melhorias na subscrição de risco para manter a competitividade no mercado e melhorar a experiência dos clientes. Foi aprovada uma alteração para produtos que aumenta o limite de capital segurado de 2M para 3M para cobertura de morte (seguro de vida).
 
 **Sistema atual:**
 - **build_proponent** contém informações pessoais: peso, idade, DPS, EV, status de fumante
