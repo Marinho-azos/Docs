@@ -91,7 +91,7 @@ A empresa de seguros precisa fazer melhorias na subscrição de risco para mante
 - **Complexidade:** Baixa
 - **Manutenibilidade:** Média
 
-#### **Opção 2: Nova Função de Validação**
+#### **Opção 2: Nova Função de Validação (recomendada)**
 - **Esforço:** Baixo
 - **Risco:** Baixo (não afeta lógica existente)
 - **Complexidade:** Baixa
@@ -99,7 +99,7 @@ A empresa de seguros precisa fazer melhorias na subscrição de risco para mante
 
 ### ⏱️ **Estimativa**
 
-**Tempo previsto para implementação:** 4h
+**Tempo previsto para implementação:** 8h
 **Inclui**: Desenvolvimento, testes e validação das regras
 
 ### 🚧 **Próximos Passos**

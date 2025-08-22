@@ -125,8 +125,8 @@ def calculate_capital_limit(
 
 ### ⏱️ **Estimativa**
 
-**Tempo previsto para Opção 1:** 3 h
-**Tempo previsto para Opção 2:** 3 h
+**Tempo previsto para Opção 1:** 7h
+**Tempo previsto para Opção 2:** 7h
 
 ### 🚧 **Próximos Passos**
 
