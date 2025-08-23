@@ -7,8 +7,8 @@ This guide provides a standardized pattern for testing observability implementat
 ## 📋 **Core Testing Principles**
 
 ### 1. **Mock External Dependencies**
-- Always mock the observability library (ddtrace, OpenTelemetry, etc.)
-- Mock at the module level to avoid import issues
+- Use standard `@patch` decorators when dependencies are available in test environment
+- Mock at the module level only when dependencies are unavailable
 - Use proper type hints and specifications
 
 ### 2. **Test Both Happy Path and Edge Cases**
@@ -37,7 +37,7 @@ tests/
 class TestObservabilityManager:
     """Test suite for ObservabilityManager."""
     
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Set up test fixtures for each test."""
         # Initialize your observability manager
         # Create mock objects
@@ -79,37 +79,29 @@ class TestObservabilityManager:
 
 ## 🔧 **Implementation Template**
 
-### **Step 1: Mock Setup**
+### **Step 1: Clean Imports (When Dependencies Available)**
 ```python
-import sys
-from types import ModuleType
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, call, patch
 
-# Mock observability library before importing your manager
-# Replace 'ddtrace' with your observability library (opentelemetry, etc.)
-mock_observability_lib = ModuleType('ddtrace')
-mock_tracer = MagicMock()
-mock_observability_lib.tracer = mock_tracer
-sys.modules['ddtrace'] = mock_observability_lib
-
-from your_project.observability import ObservabilityManager  # noqa: E402
+from adapters.interfaces.observability_service import ObservabilityService
+from frameworks.observability import ObservabilityManager
 ```
 
-### **Step 2: Test Class Setup**
+### **Step 2: Test Class Setup with Type Annotations**
 ```python
 class TestObservabilityManager:
     """Test suite for ObservabilityManager."""
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         """Set up test fixtures."""
         self.observability_manager = ObservabilityManager()
         self.mock_span = MagicMock()
 ```
 
-### **Step 3: Basic Test Pattern**
+### **Step 3: Basic Test Pattern with Proper Types**
 ```python
-@patch('your_project.observability.manager.tracer')
-def test_set_span_with_active_span(self, mock_tracer):
+@patch("your_project.observability.manager.tracer")
+def test_set_span_with_active_span(self, mock_tracer: MagicMock) -> None:
     """Test set_span when there's an active span."""
     # Arrange
     mock_tracer.current_span.return_value = self.mock_span
@@ -245,7 +237,8 @@ pytest tests/unit/observability/ --cov=src/observability --cov-fail-under=100
 - [ ] Interface compliance verified
 - [ ] 100% code coverage achieved
 - [ ] All tests pass consistently
-- [ ] Mock setup is clean and isolated
+- [ ] **All type annotations properly added** ✅
+- [ ] **Mock setup is clean and isolated** ✅
 - [ ] Test names are descriptive and follow convention
 
 ## 🎨 **Customization Guidelines**
@@ -255,19 +248,17 @@ pytest tests/unit/observability/ --cov=src/observability --cov-fail-under=100
 **OpenTelemetry**:
 ```python
 # Replace ddtrace with opentelemetry
-mock_otel = ModuleType('opentelemetry')
-mock_trace = MagicMock()
-mock_otel.trace = mock_trace
-sys.modules['opentelemetry'] = mock_otel
+@patch("your_project.observability.manager.tracer")
+def test_method(self, mock_tracer: MagicMock) -> None:
+    # Test logic
 ```
 
 **Jaeger**:
 ```python
 # Replace ddtrace with jaeger_client
-mock_jaeger = ModuleType('jaeger_client')
-mock_tracer = MagicMock()
-mock_jaeger.Tracer = mock_tracer
-sys.modules['jaeger_client'] = mock_jaeger
+@patch("your_project.observability.manager.tracer")
+def test_method(self, mock_tracer: MagicMock) -> None:
+    # Test logic
 ```
 
 ### **For Different Methods**
@@ -277,6 +268,34 @@ Adapt the test patterns for your specific observability interface:
 - `set_span_error` → `record_exception`
 - `current_span` → `get_current_span`
 
+## 🚨 **Fallback Mocking (When Dependencies Unavailable)**
+
+### **Module-Level Mocking (Use Only When Necessary)**
+```python
+import sys
+from types import ModuleType
+from unittest.mock import MagicMock, call, patch
+
+# Mock observability library before importing your manager
+# Replace 'ddtrace' with your observability library
+mock_observability_lib = ModuleType('ddtrace')
+mock_tracer = MagicMock()
+mock_observability_lib.tracer = mock_tracer
+sys.modules['ddtrace'] = mock_observability_lib
+
+from your_project.observability import ObservabilityManager  # noqa: E402
+```
+
+**When to Use This Approach**:
+- External dependency not available in test environment
+- Import-time failures that can't be resolved with standard mocking
+- Legacy systems with complex import dependencies
+
+**When NOT to Use This Approach**:
+- Dependencies are available in test environment (use standard `@patch`)
+- Simple method-level mocking is sufficient
+- You want clean, maintainable test code
+
 ## 📚 **Additional Resources**
 
 ### **Best Practices**
@@ -285,6 +304,7 @@ Adapt the test patterns for your specific observability interface:
 3. **Completeness**: Cover all code paths and edge cases
 4. **Maintainability**: Use patterns and avoid duplication
 5. **Performance**: Tests should run quickly
+6. **Type Safety**: Always include proper type annotations
 
 ### **Common Pitfalls to Avoid**
 - ❌ Not mocking external dependencies
@@ -292,6 +312,8 @@ Adapt the test patterns for your specific observability interface:
 - ❌ Incomplete edge case coverage
 - ❌ Not verifying actual calls to underlying library
 - ❌ Ignoring graceful degradation scenarios
+- ❌ Missing type annotations (causes mypy errors)
+- ❌ Complex module-level mocking when simple patching works
 
 ---
 
@@ -301,6 +323,14 @@ This pattern ensures your observability layer is:
 - **Reliable**: Comprehensive test coverage catches regressions
 - **Robust**: Edge cases and error scenarios are handled
 - **Maintainable**: Consistent patterns across projects
+- **Type-Safe**: Proper type annotations prevent runtime errors
 - **Production-Ready**: Verified behavior under all conditions
+
+### **Key Updates in This Version**
+- ✅ **Simplified approach** when dependencies are available
+- ✅ **Type annotation requirements** for all test methods
+- ✅ **Fallback mocking strategy** for unavailable dependencies
+- ✅ **Clean, maintainable test structure** using standard patterns
+- ✅ **100% coverage requirements** with proper verification
 
 Follow this guide for every observability implementation to maintain consistent quality and reliability across all your projects.
